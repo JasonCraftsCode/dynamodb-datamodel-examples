@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "es6", // same as es2015
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["es6"], // same as es2015
+    "outDir": "dist",
+    "baseUrl": "examples/baseUrl", // baseUrl used for examples so "import {Table} from 'dynamodb-datamodel'" can be used
+    "declaration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    // "sourceMap": true,
+    // "declarationMap": true,
+    "noErrorTruncation": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    // "noUnusedParameters": true,  due to function params to enforce type checking
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true
+  },
+  "exclude": ["/node_modules/", "/coverage/", "/dist/"],
+  "typedocOptions": {
+    "excludeExternals": true,
+    "excludeNotExported": true,
+    "excludePrivate": true,
+    "includeVersion": true,
+    "inputFiles": "./src/index.ts",
+    "mode": "library", // requires: npm add -D typedoc@0.17.0-3 --save-exact
+    "out": "docs",
+    "theme": "default",
+    "gitRevision": "master",
+    "includes": "./examples/"
+    // "toc": ["Table", "Model"]
+  }
+}
