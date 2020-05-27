@@ -41,7 +41,7 @@
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.9.3",
-    "yup": "^0.29.0"
+    "yup": "^0.29.1"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
