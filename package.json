@@ -31,12 +31,12 @@
     "@types/hapi__joi": "^17.1.0",
     "@types/jest": "^25.2.3",
     "@types/node": "^14.0.9",
-    "@types/yup": "^0.29.0",
+    "@types/yup": "^0.29.1",
     "jest": "^26.0.1",
-    "serverless": "^1.71.3",
+    "serverless": "^1.72.0",
     "serverless-dynamodb-local": "^0.2.39",
     "serverless-offline": "^6.3.0",
-    "ts-jest": "^26.0.0",
+    "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
@@ -46,6 +46,6 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "aws-sdk": "^2.686.0",
-    "dynamodb-datamodel": "^0.1.15"
+    "dynamodb-datamodel": "^0.1.16"
   }
 }
