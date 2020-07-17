@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "aws-sdk": "^2.689.0",
+    "aws-sdk": "^2.714.2",
     "dynamodb-datamodel": "^0.1.16"
   }
 }
