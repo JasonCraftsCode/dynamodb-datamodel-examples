@@ -1,5 +1,6 @@
 import { table } from './Table';
 
+table;
 /*
 Layout:
 - index (entry point)

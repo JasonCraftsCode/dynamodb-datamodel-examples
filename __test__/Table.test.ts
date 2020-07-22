@@ -123,29 +123,6 @@ describe('Validate Table with indexes', () => {
 
   interface ExampleTableAttributes extends ExampleTableKey, GSI0Key, LSI0Key {}
 
-  const gsi0 = Index.createIndex<GSI0Key>({
-    name: 'GSI0',
-    keySchema: {
-      G0P: Table.PrimaryKey.PartitionKeyType,
-      G0S: Table.PrimaryKey.SortKeyType,
-    },
-    projection: {
-      type: 'ALL',
-    },
-  });
-
-  const lsi0 = Index.createIndex<LSI0Key>({
-    name: 'LSI0',
-    keySchema: {
-      P: Table.PrimaryKey.PartitionKeyType,
-      L0S: Table.PrimaryKey.SortKeyType,
-    },
-    projection: {
-      attributes: ['project', 'some', 'attributes'],
-      type: 'INCLUDE',
-    },
-  });
-
   const testTable = Table.createTable<ExampleTableKey, ExampleTableAttributes>({
     name: 'ExampleTable',
     keyAttributes: {
@@ -159,11 +136,36 @@ describe('Validate Table with indexes', () => {
       P: Table.PrimaryKey.PartitionKeyType,
       S: Table.PrimaryKey.SortKeyType,
     },
-    globalIndexes: [gsi0] as Index[],
-    localIndexes: [lsi0] as Index[],
     client,
   });
 
+  const gsi0 = Index.createIndex<GSI0Key>({
+    name: 'GSI0',
+    keySchema: {
+      G0P: Table.PrimaryKey.PartitionKeyType,
+      G0S: Table.PrimaryKey.SortKeyType,
+    },
+    projection: {
+      type: 'ALL',
+    },
+    table: testTable as Table,
+    type: 'GLOBAL',
+  });
+  /*
+  const lsi0 = Index.createIndex<LSI0Key>({
+    name: 'LSI0',
+    keySchema: {
+      P: Table.PrimaryKey.PartitionKeyType,
+      L0S: Table.PrimaryKey.SortKeyType,
+    },
+    projection: {
+      attributes: ['project', 'some', 'attributes'],
+      type: 'INCLUDE',
+    },
+    table: testTable as Table,
+    type: 'LOCAL',
+  });
+*/
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -280,6 +282,7 @@ describe('Validate Table with indexes', () => {
     expect(params).toEqual({
       Key: { P: 'pk', S: 'sk' },
       ReturnConsumedCapacity: 'TOTAL',
+      ReturnValues: 'ALL_NEW',
       TableName: 'ExampleTable',
     });
   });
@@ -288,6 +291,7 @@ describe('Validate Table with indexes', () => {
     const params = table.updateParams({ P: 'pk', S: 'sk' });
     expect(params).toEqual({
       Key: { P: 'pk', S: 'sk' },
+      ReturnValues: 'ALL_NEW',
       TableName: 'ExampleTable',
     });
   });
@@ -372,6 +376,7 @@ describe('Validate Table with indexes', () => {
     expect(results).toEqual({ Attributes: {} });
     expect(client.update).toBeCalledWith({
       Key: { P: 'pk', S: 'sk' },
+      ReturnValues: 'ALL_NEW',
       TableName: 'ExampleTable',
     });
     expect(client.update).toBeCalledTimes(1);
@@ -393,6 +398,7 @@ describe('Validate Table with indexes', () => {
         ':v2': true,
       },
       Key: { P: 'pk', S: 'sk' },
+      ReturnValues: 'ALL_NEW',
       TableName: 'ExampleTable',
       UpdateExpression: 'SET #n0 = :v0, #n1 = :v1, #n2 = :v2',
     });
