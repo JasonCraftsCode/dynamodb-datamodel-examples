@@ -36,7 +36,7 @@
     "@types/yup": "^0.29.3",
     "jest": "^26.1.0",
     "npm-check-updates": "^7.0.2",
-    "serverless": "^1.75.1",
+    "serverless": "^2.41.2",
     "serverless-dynamodb-local": "^0.2.39",
     "serverless-offline": "^6.5.0",
     "ts-jest": "^26.1.3",
