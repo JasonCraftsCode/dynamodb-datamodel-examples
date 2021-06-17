@@ -43,7 +43,7 @@
     "ts-node": "^8.10.2",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.10"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
